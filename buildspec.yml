@@ -12,10 +12,10 @@ phases:
   build:
     commands:
       - php --version
-      - docker build --tag 240778039237.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-ecr:${TAG} .
+      - docker build --tag 240778039237.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-ecr:latest .
   post_build:
     commands:
-      - docker push 240778039237.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-ecr:${TAG}
+      - docker push 240778039237.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-ecr:latest
       - printf '{"tag":"%s"}' $TAG > build.json
 artifacts:
   files: build.json
