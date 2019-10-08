@@ -1,5 +1,8 @@
 version: 0.2
 phases:
+  install:
+    runtime-version:
+      php: 7.3
   pre_build:
     commands:
       - $(aws ecr get-login)
@@ -7,6 +10,7 @@ phases:
       - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
   build:
     commands:
+      - php --version
       - docker build --tag 240778039237.dkr.ecr.ap-northeast-2.amazonaws.com/cicd-ecr:${TAG} .
   post_build:
     commands:
