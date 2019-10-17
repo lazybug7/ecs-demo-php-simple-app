@@ -16,6 +16,6 @@ phases:
   post_build:
     commands:
       - docker push 240778039237.dkr.ecr.us-east-2.amazonaws.com/cicd-demo:latest
-      - printf $TAG > build.json
+      - printf '[{"name":"hello-k8s","imageUri":"%s"}]' $TAG > build.json
 artifacts:
   files: build.json
